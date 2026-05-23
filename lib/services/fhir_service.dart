@@ -22,7 +22,7 @@ class FhirService {
     try {
       final response = await http.get(uri, headers: _headers);
       _validarRespuesta(response);
-      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      final json = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
       final recursos = _parsearBundle(json);
       return recursos.map((r) => Paciente.fromFhir(r)).toList();
     } catch (e) {
@@ -36,7 +36,7 @@ class FhirService {
     try {
       final response = await http.get(uri, headers: _headers);
       _validarRespuesta(response);
-      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      final json = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
       return Paciente.fromFhir(json);
     } catch (e) {
       throw _manejarError('obtenerPaciente', e);
@@ -50,7 +50,7 @@ class FhirService {
     try {
       final response = await http.get(uri, headers: _headers);
       _validarRespuesta(response);
-      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      final json = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
       final recursos = _parsearBundle(json);
       return recursos.map((r) => Paciente.fromFhir(r)).toList();
     } catch (e) {
@@ -67,7 +67,7 @@ class FhirService {
     try {
       final response = await http.get(uri, headers: _headers);
       _validarRespuesta(response);
-      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      final json = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
       final recursos = _parsearBundle(json);
       return recursos.map((r) => Observacion.fromFhir(r)).toList();
     } catch (e) {
@@ -83,7 +83,7 @@ class FhirService {
     try {
       final response = await http.get(uri, headers: _headers);
       _validarRespuesta(response);
-      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      final json = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
       final recursos = _parsearBundle(json);
       return recursos.map((r) => Observacion.fromFhir(r)).toList();
     } catch (e) {
@@ -101,7 +101,7 @@ class FhirService {
     try {
       final response = await http.get(uri, headers: _headers);
       _validarRespuesta(response);
-      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      final json = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
       final recursos = _parsearBundle(json);
       return recursos
           .map((r) => ReporteDiagnostico.fromFhir(r))
@@ -120,7 +120,7 @@ class FhirService {
     try {
       final response = await http.get(uri, headers: _headers);
       _validarRespuesta(response);
-      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      final json = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
       final recursos = _parsearBundle(json);
       return recursos.map((r) => Medico.fromFhir(r)).toList();
     } catch (e) {
@@ -137,7 +137,7 @@ class FhirService {
     try {
       final response = await http.get(uri, headers: _headers);
       _validarRespuesta(response);
-      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      final json = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
       final recursos = _parsearBundle(json);
       return recursos.map((r) => Condicion.fromFhir(r)).toList();
     } catch (e) {
